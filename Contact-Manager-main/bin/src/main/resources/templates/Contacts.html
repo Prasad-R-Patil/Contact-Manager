@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{index}">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+<body>
+<div layout:fragment="content">
+
+
+    <div class="main p-3">
+        <div class="input-group mb-0">
+            <input type="search" id="form1" class="form-control" placeholder="Search" aria-label="Search" />
+            <button type="button" class="btn btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg>
+            </button>
+        </div>
+        <section class="py-3 py-md-5 py-xl-8">
+
+            <div class="container overflow-hidden">
+
+                <div class="row gy-4 gy-lg-0">
+                    <div class="col-12 col-lg-3 mb-2" th:each="contact : ${contacts}">
+                        <div class="card border-1 text-center" style="border: 1px solid #dee2e6;">
+                            <div class="position-relative">
+                                <!-- Edit Button -->
+                                <a th:href="@{home/contact/update/{id}(id=${contact.c_id})}" class="text-decoration-none">
+                                    <button type="button" class="btn btn-secondary position-absolute top-0 start-0 m-2">
+                                        <!-- Add your Edit SVG here -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                            <path d="M12.146 2.854a.5.5 0 0 1 .708 0l1.5 1.5a.5.5 0 0 1 0 .708l-7 7-1.5 1.5a.5.5 0 0 1-.354.146H3a.5.5 0 0 1-.5-.5v-2.5a.5.5 0 0 1 .146-.354l1.5-1.5 7-7zM11.5 4.207L7.793 7.914 5.5 5.621 9.207 2.5 11.5 4.207zM4.5 8.5l2.293 2.293L9.5 8.5l-2.293-2.293L4.5 8.5z"/>
+                                        </svg>
+                                    </button>
+                                </a>
+                                <!-- Delete Button -->
+                                <a th:href="@{home/contact/delete/{id}(id=${contact.c_id})}" class="text-decoration-none">
+                                    <button type="button" class="btn btn-danger position-absolute top-0 end-0 m-2">
+                                        <!-- Add your Delete SVG here -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path d="M5.5 0a.5.5 0 0 1 .5.5V1h5V.5a.5.5 0 0 1 1 0V1h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H1a.5.5 0 0 1-.5-.5V1a.5.5 0 0 1 .5-.5h2V.5a.5.5 0 0 1 .5-.5zM0 2.5A.5.5 0 0 1 .5 2h15a.5.5 0 0 1 .5.5v.5H0v-.5zM4 4v9a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4H4zm1 1h6v8H5V5z"/>
+                                        </svg>
+                                    </button>
+                                </a>
+                            </div>
+                            <figure class="card-img-top m-0 overflow-hidden bsb-overlay-hover d-flex justify-content-center align-items-center" style="height: 150px; border: none;">
+                                <a href="#">
+                                    <img class="img-fluid bsb-scale bsb-hover-scale-up" style="border-radius: 50%; width: 100px; height: 100px;" loading="lazy" th:src="@{/images/Profile.jpg}" alt="Flora Nyra">
+                                </a>
+                            </figure>
+                            <div class="card-body bg-white p-2" style="border: none;">
+                                <h2 class="card-title h4 fw-bold mb-2" th:text="${contact.firstName}"></h2>
+                                <p class="card-text text-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
+                                        <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                                        <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                                    </svg><span class="ms-2 fs-6" th:text="${contact.mb_no}"></span>
+                                </p>
+                                <p class="card-text text-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-paper" viewBox="0 0 16 16">
+                                        <path d="M4 0a2 2 0 0 0-2 2v1.133l-.941.502A2 2 0 0 0 0 5.4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5.4a2 2 0 0 0-1.059-1.765L14 3.133V2a2 2 0 0 0-2-2zm10 4.267.47.25A1 1 0 0 1 15 5.4v.817l-1 .6zm-1 3.15-3.75 2.25L8 8.917l-1.25.75L3 7.417V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1zm-11-.6-1-.6V5.4a1 1 0 0 1 .53-.882L2 4.267zm13 .566v5.734l-4.778-2.867zm-.035 6.88A1 1 0 0 1 14 15H2a1 1 0 0 1-.965-.738L8 10.083zM1 13.116V7.383l4.778 2.867L1 13.117Z"/>
+                                    </svg><a href="mailto:[[${contact.email}]]"  class="text-decoration-none"><span class="ms-2 fs-6" th:text="${contact.email}"></span></a>
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <a th:href="@{/home/addcontact}" style="text-decoration:none"><button type="button" class="btn btn-primary" data-mdb-ripple-init>
+
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+  <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+  <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+</svg>
+            </span>
+        </button></a>
+    </div>
+</div>
+<script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js}"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/script.js}"></script>
+<script>
+
+    const searchFocus = document.getElementById('search-focus');
+const keys = [
+  { keyCode: 'AltLeft', isTriggered: false },
+  { keyCode: 'ControlLeft', isTriggered: false },
+];
+
+window.addEventListener('keydown', (e) => {
+  keys.forEach((obj) => {
+    if (obj.keyCode === e.code) {
+      obj.isTriggered = true;
+    }
+  });
+
+  const shortcutTriggered = keys.filter((obj) => obj.isTriggered).length === keys.length;
+
+  if (shortcutTriggered) {
+    searchFocus.focus();
+  }
+});
+
+window.addEventListener('keyup', (e) => {
+  keys.forEach((obj) => {
+    if (obj.keyCode === e.code) {
+      obj.isTriggered = false;
+    }
+  });
+});
+</script>
+</body>
+</html>
