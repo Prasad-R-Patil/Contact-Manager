@@ -23,9 +23,3 @@ A simple web-based Contact Manager application built with Spring Boot. This proj
 - `src/main/java` - Java source code
 - `src/main/resources` - Configuration files and templates
 - `pom.xml` - Maven dependencies and build configuration
-
-## How to Run
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Prasad-R-Patil/Contact-Manager.git
